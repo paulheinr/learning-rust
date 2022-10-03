@@ -1,37 +1,32 @@
-extern crate core;
+use chapters::ch3;
+use chapters::ch4;
+
+use crate::chapters::ch8;
+
+#[allow(dead_code)]
+mod chapters {
+    pub mod ch3;
+    pub mod ch4;
+    pub mod ch8;
+}
 
 fn main() {
-    ch3_temperature_c_to_f(0.);
-    ch3_temperature_f_to_c(0.);
-    let fib4 = ch3_fibonacci(4);
-    let fib20 = ch3_fibonacci(20);
+    ch3::temperature_c_to_f(0.);
+    ch3::temperature_f_to_c(0.);
+    let fib4 = ch3::fibonacci(4);
+    let fib20 = ch3::fibonacci(20);
     println!("The 4th Fibonacci number is {fib4}.");
     println!("The 20th Fibonacci number is {fib20}.");
-    ch3_fibonacci(-2);
-}
+    ch3::fibonacci(-2);
 
-fn ch3_temperature_f_to_c(fahrenheit: f32) -> f32 {
-    let result = (fahrenheit - 32.0) * (5.0 / 9.0);
-    println!("{fahrenheit}°F = {result}°C");
-    return result;
-}
+    let mut s = String::from("hello");
+    ch4::change_string(&mut s);
 
-fn ch3_temperature_c_to_f(celsius: f32) -> f32 {
-    let result = (celsius * (5.0 / 9.0)) + 32.0;
-    println!("{celsius}°C = {result}°F");
-    return result;
-}
+    let median1 = ch8::get_median(&mut vec![5, 3, 5, 7, 9]);
+    let median2 = ch8::get_median(&mut vec![5, 3, 7, 9]);
+    println!("median1 is {median1}; median2 is {median2}");
 
-fn ch3_fibonacci(n: i32) -> i32 {
-    if n <= 0 {
-        println!("Number must be bigger than 0.");
-        return 0;
-    }
-    if n == 1 {
-        1
-    } else if n == 2 {
-        1
-    } else {
-        ch3_fibonacci(n - 1) + ch3_fibonacci(n - 2)
-    }
+    let mode1 = ch8::get_mode(&mut vec![5, 3, 5, 7, 9]);
+    let mode2 = ch8::get_mode(&mut vec![3, 5, 7, 9]);
+    println!("mode1 is {}; mode2 is {}", mode1, mode2);
 }
