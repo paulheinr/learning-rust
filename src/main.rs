@@ -1,3 +1,4 @@
+use chapters::ch16;
 use chapters::ch3;
 use chapters::ch4;
 
@@ -8,6 +9,7 @@ mod chapters {
     pub mod ch3;
     pub mod ch4;
     pub mod ch8;
+    pub mod ch16;
 }
 
 fn main() {
@@ -29,4 +31,6 @@ fn main() {
     let mode1 = ch8::get_mode(&mut vec![5, 3, 5, 7, 9]);
     let mode2 = ch8::get_mode(&mut vec![3, 5, 7, 9]);
     println!("mode1 is {}; mode2 is {}", mode1, mode2);
+
+    ch16::send_between();
 }
